@@ -1,0 +1,3 @@
+docker volume create datab_volue
+docker container run -d --name postgres_old -e POSTGRES_HOST_AUTH_METHOD=trust -v datab_volume:/var/lib/postgresql/data postgres:15.1
+docker container run -d --rm --name postgres_new -e POSTGRES_HOST_AUTH_METHOD=trust -v datab_volume:/var/lib/postgresql/data postgres:15.2
