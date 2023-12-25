@@ -1,0 +1,11 @@
+init swarm
+docker swarm init --advertise-addr 192.168.0.x
+
+create network
+docker network create --driver overlay mydrupal
+
+creat service for postgress
+docker service create --name psql --network mydrupal -e POSTGRES_PASSWORD
+
+and for drupal
+docker service create --name drupal --network mydrupal -p 80:80 drupal
